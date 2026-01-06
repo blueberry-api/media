@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片裁剪</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../libs/cropper.min.css">
+</head>
+<body>
+    <div class="container">
+        <p><a href="../index.html">返回首页</a></p>
+        <h1>图片裁剪</h1>
+        
+        <div class="upload-area" id="upload-area">
+            <input type="file" id="file-input" accept="image/*" hidden>
+            <p>点击或拖拽图片到此处</p>
+            <p>支持格式: JPG/JPEG/PNG/WebP/GIF/BMP</p>
+        </div>
+
+        <div id="editor" class="hidden">
+            <div class="crop-container" style="max-width:100%;max-height:500px;">
+                <img id="preview-img" style="max-width:100%;">
+            </div>
+            <p>
+                <button id="crop-btn">裁剪</button>
+            </p>
+        </div>
+
+        <div id="result" class="result hidden">
+            <img id="output">
+            <p id="output-info"></p>
+            <p><button id="download-btn">下载</button></p>
+        </div>
+    </div>
+    <script src="../libs/cropper.min.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/image-crop.js"></script>
+</body>
+</html>

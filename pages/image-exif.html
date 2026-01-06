@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片EXIF信息</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <p><a href="../index.html">返回首页</a></p>
+        <h1>图片EXIF信息查看/移除</h1>
+        
+        <div class="upload-area" id="upload-area">
+            <input type="file" id="file-input" accept="image/*" hidden>
+            <p>点击或拖拽图片到此处</p>
+            <p>支持格式: JPG/JPEG/PNG/WebP/TIFF</p>
+        </div>
+
+        <div id="editor" class="hidden">
+            <div class="preview"><img id="preview" style="max-width:300px;"></div>
+            
+            <h3>EXIF信息</h3>
+            <div id="exif-info" style="max-height:300px;overflow:auto;border:1px solid #ccc;padding:10px;"></div>
+            
+            <p>
+                <button id="remove-btn">移除EXIF并下载</button>
+            </p>
+        </div>
+    </div>
+    <script src="../libs/exif-js.min.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/image-exif.js"></script>
+</body>
+</html>

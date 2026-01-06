@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>音频格式转换</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <p><a href="../index.html">返回首页</a></p>
+        <h1>音频格式转换</h1>
+        
+        <div class="upload-area" id="upload-area">
+            <input type="file" id="file-input" accept="audio/*" hidden>
+            <p>点击或拖拽音频到此处</p>
+            <p>支持格式: MP3/WAV/OGG/AAC/FLAC/M4A/WebM 等几乎所有音频格式</p>
+        </div>
+
+        <div id="editor" class="hidden">
+            <p id="file-info"></p>
+            <audio id="audio" controls style="width:100%"></audio>
+            <div class="options">
+                <label>输出格式:
+                    <select id="format">
+                        <option value="mp3">MP3</option>
+                        <option value="wav">WAV</option>
+                    </select>
+                </label>
+                <label>比特率:
+                    <select id="bitrate">
+                        <option value="128">128 kbps</option>
+                        <option value="192" selected>192 kbps</option>
+                        <option value="256">256 kbps</option>
+                        <option value="320">320 kbps</option>
+                    </select>
+                </label>
+            </div>
+            <button id="convert-btn">转换</button>
+        </div>
+
+        <div id="progress" class="progress hidden">
+            <progress id="progress-bar" value="0" max="100"></progress>
+            <span id="progress-text"></span>
+        </div>
+
+        <div id="result" class="result hidden">
+            <audio id="output" controls style="width:100%"></audio>
+            <p>输出大小: <span id="output-info"></span></p>
+            <p><button id="download-btn">下载</button></p>
+        </div>
+    </div>
+    <script src="../libs/ffmpeg/ffmpeg.js"></script>
+    <script src="../libs/ffmpeg/ffmpeg-util.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/audio-convert.js"></script>
+</body>
+</html>

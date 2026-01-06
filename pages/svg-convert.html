@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG转换</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <p><a href="../index.html">返回首页</a></p>
+        <h1>SVG转PNG/JPG</h1>
+        
+        <div class="upload-area" id="upload-area">
+            <input type="file" id="file-input" accept=".svg,image/svg+xml" hidden>
+            <p>点击或拖拽SVG文件</p>
+            <p>支持格式: SVG</p>
+        </div>
+
+        <div id="editor" class="hidden">
+            <div class="preview"><img id="preview"></div>
+            <div class="options">
+                <label>宽度: <input type="number" id="width" value="512" min="1"></label>
+                <label>高度: <input type="number" id="height" value="512" min="1"></label>
+                <label>格式:
+                    <select id="format">
+                        <option value="png">PNG</option>
+                        <option value="jpeg">JPEG</option>
+                    </select>
+                </label>
+            </div>
+            <button id="convert-btn">转换</button>
+        </div>
+
+        <div id="result" class="result hidden">
+            <img id="output">
+            <p><button id="download-btn">下载</button></p>
+        </div>
+    </div>
+    <script src="../js/utils.js"></script>
+    <script src="../js/svg-convert.js"></script>
+</body>
+</html>

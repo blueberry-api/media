@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片格式转换</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <p><a href="../index.html">返回首页</a></p>
+        <h1>图片格式转换</h1>
+        
+        <div class="upload-area" id="upload-area">
+            <input type="file" id="file-input" accept="image/*" multiple hidden>
+            <p>点击或拖拽图片到此处 (支持多选)</p>
+            <p>支持格式: JPG/JPEG/PNG/WebP/GIF/BMP/ICO/SVG</p>
+        </div>
+
+        <div id="image-list" class="image-list"></div>
+
+        <div id="options" class="options hidden">
+            <label>输出格式: 
+                <select id="format">
+                    <option value="webp">WebP</option>
+                    <option value="jpeg">JPEG</option>
+                    <option value="png">PNG</option>
+                </select>
+            </label>
+            <label>质量: <input type="range" id="quality" min="1" max="100" value="85"> <span id="quality-val">85</span></label>
+            <p><button id="convert-btn">批量转换</button></p>
+        </div>
+
+        <div id="results" class="results-list"></div>
+    </div>
+
+    <script src="../js/utils.js"></script>
+    <script src="../js/image-convert.js"></script>
+</body>
+</html>

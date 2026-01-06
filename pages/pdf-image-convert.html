@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF与图片互转</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <p><a href="../index.html">返回首页</a></p>
+        <h1>PDF与图片互转</h1>
+        
+        <div class="options">
+            <label><input type="radio" name="mode" value="pdf2img" checked> PDF转图片</label>
+            <label><input type="radio" name="mode" value="img2pdf"> 图片转PDF</label>
+        </div>
+
+        <div id="pdf2img-section">
+            <div class="upload-area" id="pdf-upload-area">
+                <input type="file" id="pdf-input" accept=".pdf" hidden>
+                <p>点击或拖拽PDF文件到此处</p>
+            </div>
+            <div id="pdf-info" class="hidden" style="margin:10px 0;padding:10px;background:#e7f1ff;border-radius:4px;"></div>
+            <div id="pdf-options" class="options hidden">
+                <label>格式: <select id="img-format"><option value="jpeg">JPG</option><option value="png">PNG</option></select></label>
+                <label>质量: <select id="img-quality"><option value="0.6">低</option><option value="0.8" selected>中</option><option value="0.92">高</option></select></label>
+                <label>缩放: <select id="img-scale"><option value="1">1x</option><option value="1.5">1.5x</option><option value="2" selected>2x</option></select></label>
+                <p>
+                    <button id="convert-pdf-btn">转换为图片</button>
+                    <button id="download-all-btn" class="hidden">打包下载全部</button>
+                </p>
+            </div>
+            <div id="pdf-progress" class="progress hidden"><div id="pdf-progress-text">处理中...</div></div>
+            <div id="pdf-preview-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-top:15px;"></div>
+        </div>
+
+        <div id="img2pdf-section" class="hidden">
+            <div class="upload-area" id="img-upload-area">
+                <input type="file" id="img-input" accept="image/*" multiple hidden>
+                <p>点击或拖拽图片到此处 (支持多选)</p>
+            </div>
+            <div id="image-list" class="image-list"></div>
+            <div id="img-options" class="options hidden">
+                <label>页面尺寸: <select id="page-size"><option value="fit">适应图片</option><option value="a4">A4</option><option value="letter">Letter</option></select></label>
+                <label>位置: <select id="img-position"><option value="center">居中</option><option value="fill">填充</option></select></label>
+                <p>
+                    <button id="convert-img-btn">生成PDF</button>
+                    <button id="clear-img-btn">清空列表</button>
+                </p>
+            </div>
+            <div id="img-progress" class="progress hidden"><div id="img-progress-text">处理中...</div></div>
+        </div>
+    </div>
+
+    <script src="../libs/pdf-lib.min.js"></script>
+    <script src="../libs/pdf.min.js"></script>
+    <script src="../libs/jszip.min.js"></script>
+    <script src="../js/pdf-image-convert.js"></script>
+</body>
+</html>

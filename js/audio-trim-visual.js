@@ -1,0 +1,124 @@
+(function () {
+    let wavesurfer = null;
+    let audioFile = null;
+    let outputBlob = null;
+    let ffmpeg = null;
+
+    Utils.setupUpload("upload-area", "file-input", (files) => {
+        if (files[0]) loadAudio(files[0]);
+    }, false);
+
+    document.getElementById("play-btn").addEventListener("click", () => wavesurfer?.play());
+    document.getElementById("pause-btn").addEventListener("click", () => wavesurfer?.pause());
+    document.getElementById("play-selection-btn").addEventListener("click", playSelection);
+    document.getElementById("trim-btn").addEventListener("click", trim);
+    document.getElementById("download-btn").addEventListener("click", () => {
+        const format = document.getElementById("format").value;
+        if (outputBlob) Utils.download(outputBlob, "trimmed." + format);
+    });
+
+    async function loadAudio(file) {
+        audioFile = file;
+        document.getElementById("editor").classList.remove("hidden");
+        document.getElementById("result").classList.add("hidden");
+
+        if (wavesurfer) wavesurfer.destroy();
+
+        wavesurfer = WaveSurfer.create({
+            container: "#waveform",
+            waveColor: "#4a90d9",
+            progressColor: "#1a5fb4",
+            cursorColor: "#333",
+            height: 128,
+            normalize: true,
+        });
+
+        wavesurfer.loadBlob(file);
+
+        wavesurfer.on("ready", () => {
+            const duration = wavesurfer.getDuration();
+            document.getElementById("duration").textContent = duration.toFixed(2);
+            document.getElementById("end").value = Math.min(10, duration).toFixed(1);
+            document.getElementById("end").max = duration;
+            document.getElementById("start").max = duration;
+        });
+
+        wavesurfer.on("audioprocess", () => {
+            document.getElementById("current-time").textContent = wavesurfer.getCurrentTime().toFixed(2);
+        });
+
+        wavesurfer.on("seek", () => {
+            document.getElementById("current-time").textContent = wavesurfer.getCurrentTime().toFixed(2);
+        });
+    }
+
+    function playSelection() {
+        if (!wavesurfer) return;
+        const start = parseFloat(document.getElementById("start").value) || 0;
+        const end = parseFloat(document.getElementById("end").value) || 10;
+        wavesurfer.play(start, end);
+    }
+
+    async function initFFmpeg() {
+        if (ffmpeg) return ffmpeg;
+        const { FFmpeg } = FFmpegWASM;
+        ffmpeg = new FFmpeg();
+        await ffmpeg.load({
+            coreURL: "../libs/ffmpeg/ffmpeg-core.js",
+            wasmURL: "../libs/ffmpeg/ffmpeg-core.wasm",
+        });
+        return ffmpeg;
+    }
+
+    async function trim() {
+        if (!audioFile) return;
+
+        const start = parseFloat(document.getElementById("start").value) || 0;
+        const end = parseFloat(document.getElementById("end").value) || 10;
+        const format = document.getElementById("format").value;
+        const duration = end - start;
+
+        const progressEl = document.getElementById("progress");
+        const progressText = document.getElementById("progress-text");
+        if (progressEl) {
+            progressEl.classList.remove("hidden");
+            progressText.textContent = "加载FFmpeg...";
+        }
+
+        try {
+            const ff = await initFFmpeg();
+            const { fetchFile } = FFmpegUtil;
+
+            const inputName = "input" + getExt(audioFile.name);
+            const outputName = "output." + format;
+
+            await ff.writeFile(inputName, await fetchFile(audioFile));
+
+            if (progressText) progressText.textContent = "裁剪中...";
+
+            const args = ["-i", inputName, "-ss", String(start), "-t", String(duration)];
+            if (format === "mp3") {
+                args.push("-b:a", "192k");
+            }
+            args.push(outputName);
+
+            await ff.exec(args);
+
+            const data = await ff.readFile(outputName);
+            outputBlob = new Blob([data.buffer], { type: format === "mp3" ? "audio/mp3" : "audio/wav" });
+
+            await ff.deleteFile(inputName);
+            await ff.deleteFile(outputName);
+
+            document.getElementById("output").src = URL.createObjectURL(outputBlob);
+            document.getElementById("result").classList.remove("hidden");
+        } catch (e) {
+            alert("裁剪失败: " + e.message);
+        }
+        if (progressEl) progressEl.classList.add("hidden");
+    }
+
+    function getExt(filename) {
+        return "." + filename.split(".").pop().toLowerCase();
+    }
+})();

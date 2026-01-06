@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>二维码生成/识别</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <p><a href="../index.html">返回首页</a></p>
+        <h1>二维码工具</h1>
+        
+        <h3>生成二维码</h3>
+        <div class="options">
+            <textarea id="qr-text" rows="3" style="width:100%" placeholder="输入文字或网址"></textarea>
+            <label>尺寸: <input type="number" id="qr-size" value="200" min="100" max="500"></label>
+            <button id="generate-btn">生成</button>
+        </div>
+        <div id="qr-result" class="result hidden">
+            <canvas id="qr-canvas"></canvas>
+            <p><button id="download-qr">下载</button></p>
+        </div>
+
+        <hr>
+        <h3>识别二维码</h3>
+        <div class="upload-area" id="upload-area">
+            <input type="file" id="file-input" accept="image/*" hidden>
+            <p>点击或拖拽二维码图片</p>
+            <p>支持格式: JPG/JPEG/PNG/WebP/GIF/BMP</p>
+        </div>
+        <div id="scan-result" class="hidden">
+            <p>识别结果:</p>
+            <textarea id="scan-output" rows="3" style="width:100%" readonly></textarea>
+        </div>
+    </div>
+    <script src="../libs/qrcode.min.js"></script>
+    <script src="../libs/jsqr.min.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/qrcode.js"></script>
+</body>
+</html>

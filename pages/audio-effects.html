@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>音频效果处理</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <p><a href="../index.html">返回首页</a></p>
+        <h1>音频效果处理</h1>
+        
+        <div class="upload-area" id="upload-area">
+            <input type="file" id="file-input" accept="audio/*" hidden>
+            <p>点击或拖拽音频到此处</p>
+            <p>支持格式: 几乎所有音频格式</p>
+        </div>
+
+        <div id="editor" class="hidden">
+            <p id="file-info"></p>
+            
+            <div class="options">
+                <h3>音量</h3>
+                <label>音量: <input type="range" id="volume" min="-20" max="20" value="0"> <span id="volume-val">0</span> dB</label>
+                
+                <h3>变速变调</h3>
+                <label>播放速度: <input type="range" id="speed" min="0.5" max="2" step="0.1" value="1"> <span id="speed-val">1</span>x</label>
+                
+                <h3>均衡器</h3>
+                <label>低音: <input type="range" id="bass" min="-12" max="12" value="0"> <span id="bass-val">0</span> dB</label>
+                <label>中音: <input type="range" id="mid" min="-12" max="12" value="0"> <span id="mid-val">0</span> dB</label>
+                <label>高音: <input type="range" id="treble" min="-12" max="12" value="0"> <span id="treble-val">0</span> dB</label>
+                
+                <h3>效果</h3>
+                <label>混响: <input type="range" id="reverb" min="0" max="100" value="0"> <span id="reverb-val">0</span>%</label>
+                <label>延迟: <input type="range" id="delay" min="0" max="100" value="0"> <span id="delay-val">0</span>%</label>
+            </div>
+            
+            <p>
+                <button id="play-btn">播放预览</button>
+                <button id="stop-btn">停止</button>
+                <button id="reset-btn">重置效果</button>
+            </p>
+            <p>
+                <button id="export-btn">导出处理后的音频</button>
+            </p>
+        </div>
+
+        <div id="progress" class="progress hidden">
+            <progress id="progress-bar" value="0" max="100"></progress>
+            <span id="progress-text"></span>
+        </div>
+
+        <div id="result" class="result hidden">
+            <audio id="output" controls style="width:100%"></audio>
+            <p><button id="download-btn">下载</button></p>
+        </div>
+    </div>
+    <script src="../libs/tone.min.js"></script>
+    <script src="../libs/ffmpeg/ffmpeg.js"></script>
+    <script src="../libs/ffmpeg/ffmpeg-util.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/audio-effects.js"></script>
+</body>
+</html>

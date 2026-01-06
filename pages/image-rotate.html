@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片旋转/翻转</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <p><a href="../index.html">返回首页</a></p>
+        <h1>图片旋转/翻转</h1>
+        
+        <div class="upload-area" id="upload-area">
+            <input type="file" id="file-input" accept="image/*" hidden>
+            <p>点击或拖拽图片到此处</p>
+            <p>支持格式: JPG/JPEG/PNG/WebP/GIF/BMP</p>
+        </div>
+
+        <div id="editor" class="hidden">
+            <div class="preview"><img id="preview"></div>
+            <div class="options">
+                <button id="rotate-left">左转90</button>
+                <button id="rotate-right">右转90</button>
+                <button id="flip-h">水平翻转</button>
+                <button id="flip-v">垂直翻转</button>
+            </div>
+            <p><button id="download-btn">下载</button></p>
+        </div>
+    </div>
+    <script src="../js/utils.js"></script>
+    <script src="../js/image-rotate.js"></script>
+</body>
+</html>

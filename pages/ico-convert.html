@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICO图标制作</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <p><a href="../index.html">返回首页</a></p>
+        <h1>ICO图标制作</h1>
+        
+        <div class="upload-area" id="upload-area">
+            <input type="file" id="file-input" accept="image/*" hidden>
+            <p>点击或拖拽图片</p>
+            <p>支持格式: JPG/JPEG/PNG/WebP/GIF/BMP</p>
+        </div>
+
+        <div id="editor" class="hidden">
+            <div class="preview"><img id="preview"></div>
+            <div class="options">
+                <label>尺寸:
+                    <select id="size">
+                        <option value="16">16x16</option>
+                        <option value="32">32x32</option>
+                        <option value="48">48x48</option>
+                        <option value="64">64x64</option>
+                        <option value="128">128x128</option>
+                        <option value="256" selected>256x256</option>
+                    </select>
+                </label>
+            </div>
+            <button id="convert-btn">生成ICO</button>
+        </div>
+
+        <div id="result" class="result hidden">
+            <p>ICO文件已生成</p>
+            <button id="download-btn">下载ICO</button>
+        </div>
+    </div>
+    <script src="../js/utils.js"></script>
+    <script src="../js/ico-convert.js"></script>
+</body>
+</html>

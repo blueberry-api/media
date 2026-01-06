@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>视频裁剪</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <p><a href="../index.html">返回首页</a></p>
+        <h1>视频裁剪</h1>
+        
+        <div class="upload-area" id="upload-area">
+            <input type="file" id="file-input" accept="video/*" hidden>
+            <p>点击或拖拽视频到此处</p>
+            <p>支持格式: 几乎所有视频格式</p>
+        </div>
+
+        <div id="editor" class="hidden">
+            <div class="preview">
+                <video id="video" controls></video>
+            </div>
+            <div class="options">
+                <label>开始(秒): <input type="number" id="start" value="0" min="0" step="0.1"></label>
+                <label>结束(秒): <input type="number" id="end" value="10" min="0" step="0.1"></label>
+                <span>总时长: <span id="duration">0</span>秒</span>
+            </div>
+            <button id="trim-btn">裁剪视频</button>
+        </div>
+
+        <div id="progress" class="progress hidden">
+            <progress id="progress-bar" value="0" max="100"></progress>
+            <span id="progress-text"></span>
+        </div>
+
+        <div id="result" class="result hidden">
+            <video id="output" controls></video>
+            <p><button id="download-btn">下载</button></p>
+        </div>
+    </div>
+    <script src="../libs/ffmpeg/ffmpeg.js"></script>
+    <script src="../libs/ffmpeg/ffmpeg-util.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/video-trim.js"></script>
+</body>
+</html>

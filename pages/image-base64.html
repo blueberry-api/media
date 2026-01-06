@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片Base64互转</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <p><a href="../index.html">返回首页</a></p>
+        <h1>图片Base64互转</h1>
+        
+        <h3>图片转Base64</h3>
+        <div class="upload-area" id="upload-area">
+            <input type="file" id="file-input" accept="image/*" hidden>
+            <p>点击或拖拽图片到此处</p>
+            <p>支持格式: JPG/JPEG/PNG/WebP/GIF/BMP</p>
+        </div>
+        <div id="to-base64-result" class="hidden">
+            <textarea id="base64-output" rows="6" style="width:100%"></textarea>
+            <button id="copy-btn">复制</button>
+        </div>
+
+        <hr>
+        <h3>Base64转图片</h3>
+        <textarea id="base64-input" rows="4" style="width:100%" placeholder="粘贴Base64编码"></textarea>
+        <button id="convert-btn">转换</button>
+        <div id="to-image-result" class="result hidden">
+            <img id="output">
+            <p><button id="download-btn">下载</button></p>
+        </div>
+    </div>
+    <script src="../js/utils.js"></script>
+    <script src="../js/image-base64.js"></script>
+</body>
+</html>

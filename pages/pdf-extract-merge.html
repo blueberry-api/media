@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF页面提取合并</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <p><a href="../index.html">返回首页</a></p>
+        <h1>PDF页面提取合并</h1>
+        <p>上传多个PDF文件，指定页面范围，合并为一个新PDF</p>
+        
+        <div class="upload-area" id="upload-area">
+            <input type="file" id="file-input" accept=".pdf" multiple hidden>
+            <p>点击或拖拽PDF文件到此处 (支持多选)</p>
+        </div>
+
+        <div id="pdf-list" class="image-list"></div>
+
+        <div id="options" class="options hidden">
+            <p>页面范围格式：<code>1-5</code> 或 <code>1,3,5</code> 或 <code>1-3,7,9-11</code>，留空=全部</p>
+            <p>
+                <button id="merge-btn" disabled>合并并下载</button>
+                <button id="clear-btn">清空列表</button>
+            </p>
+            <div id="progress" class="progress hidden">
+                <div id="progress-text">处理中...</div>
+            </div>
+        </div>
+
+        <div id="preview-modal" class="hidden" style="position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);z-index:1000;overflow:auto;padding:20px;">
+            <div style="background:#fff;max-width:900px;margin:0 auto;border-radius:8px;padding:20px;">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:15px;">
+                    <h3 id="preview-title" style="margin:0;">页面预览</h3>
+                    <button id="close-modal">×</button>
+                </div>
+                <div id="preview-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;"></div>
+                <div style="margin-top:15px;display:flex;justify-content:space-between;align-items:center;">
+                    <span id="selection-info">点击页面选择/取消</span>
+                    <div>
+                        <button id="select-all-btn">全选</button>
+                        <button id="clear-selection-btn">清空</button>
+                        <button id="apply-selection-btn">应用选择</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../libs/pdf-lib.min.js"></script>
+    <script src="../libs/pdf.min.js"></script>
+    <script src="../js/pdf-extract-merge.js"></script>
+</body>
+</html>

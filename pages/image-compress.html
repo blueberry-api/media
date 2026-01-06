@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片压缩</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <p><a href="../index.html">返回首页</a></p>
+        <h1>图片压缩</h1>
+        
+        <div class="upload-area" id="upload-area">
+            <input type="file" id="file-input" accept="image/*" multiple hidden>
+            <p>点击或拖拽图片到此处 (支持多选)</p>
+            <p>支持格式: JPG/JPEG/PNG/WebP/GIF/BMP</p>
+        </div>
+
+        <div id="image-list" class="image-list"></div>
+
+        <div id="options" class="options hidden">
+            <label>压缩质量: <input type="range" id="quality" min="1" max="100" value="70"> <span id="quality-val">70</span></label>
+            <label>最大宽度: <input type="number" id="max-width" value="1920" min="0"> (0=不限)</label>
+            <p><button id="compress-btn">批量压缩</button></p>
+        </div>
+
+        <div id="results" class="results-list"></div>
+    </div>
+
+    <script src="../libs/browser-image-compression.min.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/image-compress.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>音频裁剪</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <p><a href="../index.html">返回首页</a></p>
+        <h1>音频裁剪</h1>
+        
+        <div class="upload-area" id="upload-area">
+            <input type="file" id="file-input" accept="audio/*" hidden>
+            <p>点击或拖拽音频到此处</p>
+            <p>支持格式: 几乎所有音频格式</p>
+        </div>
+
+        <div id="editor" class="hidden">
+            <audio id="audio" controls style="width:100%"></audio>
+            <div class="options">
+                <label>开始(秒): <input type="number" id="start" value="0" min="0" step="0.1"></label>
+                <label>结束(秒): <input type="number" id="end" value="10" min="0" step="0.1"></label>
+                <span>总时长: <span id="duration">0</span>秒</span>
+                <label>输出格式:
+                    <select id="format">
+                        <option value="mp3">MP3</option>
+                        <option value="wav">WAV</option>
+                    </select>
+                </label>
+            </div>
+            <button id="trim-btn">裁剪</button>
+        </div>
+
+        <div id="progress" class="progress hidden">
+            <progress id="progress-bar" value="0" max="100"></progress>
+            <span id="progress-text"></span>
+        </div>
+
+        <div id="result" class="result hidden">
+            <audio id="output" controls style="width:100%"></audio>
+            <p><button id="download-btn">下载</button></p>
+        </div>
+    </div>
+    <script src="../libs/ffmpeg/ffmpeg.js"></script>
+    <script src="../libs/ffmpeg/ffmpeg-util.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/audio-trim.js"></script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIF合成</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <p><a href="../index.html">返回首页</a></p>
+        <h1>多图合成GIF</h1>
+        
+        <div class="upload-area" id="upload-area">
+            <input type="file" id="file-input" accept="image/*" multiple hidden>
+            <p>点击或拖拽多张图片 (支持多选)</p>
+            <p>支持格式: JPG/JPEG/PNG/WebP/BMP</p>
+        </div>
+
+        <div id="image-list" class="image-list"></div>
+
+        <div id="options" class="options hidden">
+            <label>帧间隔(ms): <input type="number" id="delay" value="200" min="50"></label>
+            <label>宽度: <input type="number" id="width" value="400" min="50"></label>
+            <button id="convert-btn">生成GIF</button>
+        </div>
+
+        <div id="progress" class="progress hidden">
+            <progress id="progress-bar" value="0" max="100"></progress>
+        </div>
+
+        <div id="result" class="result hidden">
+            <img id="output">
+            <p><button id="download-btn">下载GIF</button></p>
+        </div>
+    </div>
+    <script src="../libs/gif.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/gif-merge.js"></script>
+</body>
+</html>

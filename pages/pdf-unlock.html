@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF解锁</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <p><a href="../index.html">返回首页</a></p>
+        <h1>PDF解锁</h1>
+        <p>移除PDF的权限限制（打印、复制、编辑等）</p>
+        
+        <div class="upload-area" id="upload-area">
+            <input type="file" id="file-input" accept=".pdf" hidden>
+            <p>点击或拖拽PDF文件到此处</p>
+        </div>
+
+        <div id="file-info" class="hidden" style="margin:15px 0;padding:15px;background:#f5f5f5;border-radius:4px;">
+            <div id="file-name" style="font-weight:500;"></div>
+            <div id="file-meta" style="font-size:12px;color:#666;margin-top:5px;"></div>
+            <div id="status-list" style="margin-top:10px;"></div>
+            <p style="margin-top:15px;"><button id="unlock-btn" disabled>解锁PDF</button></p>
+            <div id="result" class="hidden" style="margin-top:10px;padding:10px;border-radius:4px;"></div>
+        </div>
+
+        <p style="background:#fff3cd;padding:10px;border-radius:4px;font-size:13px;">
+            注意：此工具只能移除权限限制，无法破解需要密码才能打开的PDF。
+        </p>
+    </div>
+
+    <script src="../libs/pdf-lib.min.js"></script>
+    <script src="../libs/pdf.min.js"></script>
+    <script src="../js/pdf-unlock.js"></script>
+</body>
+</html>

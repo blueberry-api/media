@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIF分解</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <p><a href="../index.html">返回首页</a></p>
+        <h1>GIF分解为帧</h1>
+        
+        <div class="upload-area" id="upload-area">
+            <input type="file" id="file-input" accept=".gif,image/gif" hidden>
+            <p>点击或拖拽GIF文件</p>
+            <p>支持格式: GIF</p>
+        </div>
+
+        <div id="progress" class="progress hidden">
+            <span id="progress-text"></span>
+        </div>
+
+        <div id="results" class="results-list"></div>
+        <p id="download-all" class="hidden"><button id="download-all-btn">下载全部(ZIP)</button></p>
+    </div>
+    <script src="../libs/gifuct-js.min.js"></script>
+    <script src="../libs/jszip.min.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/gif-split.js"></script>
+</body>
+</html>

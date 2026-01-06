@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>视频格式转换</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <p><a href="../index.html">返回首页</a></p>
+        <h1>视频格式转换</h1>
+        
+        <div class="upload-area" id="upload-area">
+            <input type="file" id="file-input" accept="video/*" hidden>
+            <p>点击或拖拽视频到此处</p>
+            <p>支持格式: 几乎所有视频格式</p>
+        </div>
+
+        <div id="editor" class="hidden">
+            <div class="preview">
+                <video id="video" controls></video>
+            </div>
+            
+            <div class="options">
+                <label>输出格式:
+                    <select id="format">
+                        <option value="webm">WebM</option>
+                        <option value="mp4">MP4 (需浏览器支持)</option>
+                    </select>
+                </label>
+            </div>
+            
+            <button id="convert-btn">开始转换</button>
+        </div>
+
+        <div id="progress" class="progress hidden">
+            <progress id="progress-bar" value="0" max="100"></progress>
+            <span id="progress-text"></span>
+        </div>
+
+        <div id="result" class="result hidden">
+            <video id="output" controls></video>
+            <p><button id="download-btn">下载视频</button></p>
+        </div>
+    </div>
+
+    <script src="../libs/ffmpeg/ffmpeg.js"></script>
+    <script src="../libs/ffmpeg/ffmpeg-util.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/video-convert.js"></script>
+</body>
+</html>

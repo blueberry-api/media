@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片调整尺寸</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <p><a href="../index.html">返回首页</a></p>
+        <h1>图片调整尺寸</h1>
+        
+        <div class="upload-area" id="upload-area">
+            <input type="file" id="file-input" accept="image/*" multiple hidden>
+            <p>点击或拖拽图片到此处 (支持多选)</p>
+            <p>支持格式: JPG/JPEG/PNG/WebP/GIF/BMP</p>
+        </div>
+
+        <div id="image-list" class="image-list"></div>
+
+        <div id="options" class="options hidden">
+            <label>宽度: <input type="number" id="width" value="800" min="1"></label>
+            <label>高度: <input type="number" id="height" value="600" min="1"></label>
+            <label><input type="checkbox" id="keep-ratio" checked> 保持比例</label>
+            <p><button id="resize-btn">批量调整</button></p>
+        </div>
+
+        <div id="results" class="results-list"></div>
+    </div>
+
+    <script src="../libs/pica.min.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/image-resize.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>视频转GIF</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <p><a href="../index.html">返回首页</a></p>
+        <h1>视频转GIF</h1>
+        
+        <div class="upload-area" id="upload-area">
+            <input type="file" id="file-input" accept="video/mp4,video/webm,video/ogg" hidden>
+            <p>点击或拖拽视频文件到此处</p>
+            <p>支持 MP4, WebM, OGG</p>
+        </div>
+
+        <div id="editor" class="hidden">
+            <div class="preview">
+                <video id="video" controls></video>
+            </div>
+            
+            <div class="options">
+                <label>起始(秒): <input type="number" id="start" value="0" min="0" step="0.1"></label>
+                <label>时长(秒): <input type="number" id="duration" value="3" min="0.5" max="10" step="0.5"></label>
+                <label>帧率: <input type="number" id="fps" value="10" min="5" max="30"></label>
+                <label>宽度: <input type="number" id="width" value="480" min="100" max="1920"></label>
+            </div>
+            
+            <button id="convert-btn">转换为GIF</button>
+        </div>
+
+        <div id="progress" class="progress hidden">
+            <progress id="progress-bar" value="0" max="100"></progress>
+            <span id="progress-text"></span>
+        </div>
+
+        <div id="result" class="result hidden">
+            <h3>转换结果</h3>
+            <img id="output">
+            <p><button id="download-btn">下载GIF</button></p>
+        </div>
+    </div>
+
+    <script src="../libs/gif.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/video-to-gif.js"></script>
+</body>
+</html>

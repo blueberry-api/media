@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>颜色转换</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <p><a href="../index.html">返回首页</a></p>
+        <h1>颜色转换</h1>
+        
+        <div class="options">
+            <div id="color-preview" style="width:100px;height:100px;border:1px solid #ccc;background:#ff0000"></div>
+            <p>
+                <label>选择颜色: <input type="color" id="color-picker" value="#ff0000"></label>
+            </p>
+            <p>
+                <label>HEX: <input type="text" id="hex" value="#ff0000"></label>
+            </p>
+            <p>
+                <label>RGB: <input type="text" id="rgb" value="rgb(255, 0, 0)"></label>
+            </p>
+            <p>
+                <label>HSL: <input type="text" id="hsl" value="hsl(0, 100%, 50%)"></label>
+            </p>
+            <p>
+                <label>RGBA: <input type="text" id="rgba" value="rgba(255, 0, 0, 1)"></label>
+            </p>
+        </div>
+    </div>
+    <script src="../js/utils.js"></script>
+    <script src="../js/color-convert.js"></script>
+</body>
+</html>
